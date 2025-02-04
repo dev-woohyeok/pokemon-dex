@@ -20,7 +20,7 @@ function Logo() {
 }
 
 const StImg = styled.img`
-	width: calc(150px + 40vmin);
+	width: calc(100px + 60vmin);
 	height: calc(50px + 30vmin);
 `;
 

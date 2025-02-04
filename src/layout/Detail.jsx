@@ -49,7 +49,7 @@ const StType = styled.span`
 
 const StDescription = styled.span`
 	font-size: calc(1rem + 0.5vmin);
-	font-weight: 300;
+	font-weight: 350;
 `;
 
 export default Detail;

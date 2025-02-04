@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { DTO_POKEMON, STYLES_CARD } from '~/type/type';
+import { DTO_POKEMON, STYLES_CARD, STYLES_CONTAINER } from '~/type/type';
 import Button from '~components/Button';
 import Skeleton from '~components/Skeleton';
 import useLoad from '~hooks/useLoad';
@@ -15,12 +15,13 @@ const Card = ({ pokemon, styles = STYLES_CARD.DEFAULT, onClick, selected }) => {
 		pokemon?.[DTO_POKEMON.IMAGE] || defaultCard.src,
 	);
 	const nav = useNavigate();
+	const handleClick = (e) => {
+		styles === STYLES_CARD.POKEMON &&
+			nav(`/detail/${pokemon?.[DTO_POKEMON.ID]}`);
+	};
 
 	return (
-		<StCard
-			onClick={() => nav(`/detail/${pokemon?.[DTO_POKEMON.ID]}`)}
-			type={styles}
-		>
+		<StCard onClick={handleClick} type={styles}>
 			<StCardAvatar>
 				{isLoaded ? (
 					<StImage
@@ -93,6 +94,7 @@ const StCard = styled.div`
 			border: 1px solid #ccc;
 			padding: 2.5rem;
 			transition: transform 0.2s;
+			cursor: pointer;
 			box-shadow: 5px 5px rgba(0, 98, 90, 0.4),
 				10px 10px rgba(0, 98, 90, 0.3), 15px 15px rgba(0, 98, 90, 0.2),
 				20px 20px rgba(0, 98, 90, 0.1), 25px 25px rgba(0, 98, 90, 0.05);
