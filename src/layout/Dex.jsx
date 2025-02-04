@@ -7,11 +7,9 @@ import styled from 'styled-components';
 function Dex() {
 	const [pokemonList, setPokemonList] = useState(MOCK_DATA);
 	const [dex, setDex] = useState(Array(6).fill({ selected: false }));
-
 	const onAddDexHandler = useCallback((pokemon) => {
 		const newPokemon = { ...pokemon, selected: true };
 		setDex((prev) => {
-			console.log('테스트 =>>>');
 			const index = prev.findIndex((obj) => !obj.selected);
 			if (index === -1) {
 				alert(`최대 6마리까지 선택이 가능합니다.`);
