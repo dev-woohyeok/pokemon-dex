@@ -12,9 +12,9 @@ const StButton = styled.button`
 	border-radius: 0.5rem;
 	cursor: pointer;
 	color: white;
-
-	&:hover {
-		background-color: #ffcc00;
+	font-weight: bold;
+	f &:hover {
+		background-color: #f34444;
 	}
 `;
 
