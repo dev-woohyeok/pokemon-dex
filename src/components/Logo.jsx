@@ -1,40 +1,32 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import SkeletonElement from './SkeletonElement';
+import Skeleton from '~components/Skeleton';
+
+import useLoad from '~hooks/useLoad';
 
 function Logo() {
-	const [isLoaded, setIsLoaded] = useState(false);
-	const [imgSrc, setImgSrc] = useState('');
-
-	useEffect(() => {
-		const img = new Image();
-		img.src =
-			'https://github.com/RetroJohn86/Pokemon-Logos-Plus-More/blob/main/Pokemon%20International%20(3).png?raw=true';
-		img.onload = () => {
-			setImgSrc(img.src);
-			setIsLoaded(true);
-		};
-	}, []);
+	const [isLoaded, imgSrc] = useLoad(
+		'https://github.com/RetroJohn86/Pokemon-Logos-Plus-More/blob/main/Pokemon%20International%20(3).png?raw=true',
+	);
 
 	return (
 		<StLogo>
 			{isLoaded ? (
 				<StImg src={imgSrc} alt="logo" />
 			) : (
-				<SkeletonElement type="logo" />
+				<Skeleton type="logo" />
 			)}
 		</StLogo>
 	);
 }
 
 const StImg = styled.img`
-	width: 1000px;
-	height: 500px;
+	width: calc(150px + 40vmin);
+	height: calc(50px + 30vmin);
 `;
 
 const StLogo = styled.div`
 	display: flex;
-	justify-content: center;
+	justify-items: center;
 	align-items: center;
 `;
 

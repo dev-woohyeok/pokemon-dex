@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '../components/Button';
+import Button from '/src/components/Button';
 
-import Logo from '../components/Logo';
+import Logo from '/src/components/Logo';
 
 function Home() {
 	const nav = useNavigate();
@@ -21,7 +21,8 @@ const StContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 20px;
+	justify-content: center;
+	height: 100vh;
 `;
 
 export default Home;

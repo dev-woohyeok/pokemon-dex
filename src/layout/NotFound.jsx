@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import Button from '../components/Button';
+
 import { useNavigate } from 'react-router-dom';
+import Button from '/src/components/Button';
 
 function NotFound() {
 	const nav = useNavigate();
@@ -15,7 +16,7 @@ function NotFound() {
 					입력하신 주소가 정확한지 다시 한번 확인해주세요
 				</StText>
 			</StWrapper>
-			<Button onClick={() => nav(-1)}>돌아가기</Button>
+			<Button onClick={() => nav(-1)}>뒤로가기</Button>
 		</StContainer>
 	);
 }
@@ -44,7 +45,6 @@ const StContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 2rem;
 	border-radius: 1rem;
 	margin: 2rem;
 	gap: 2rem;
