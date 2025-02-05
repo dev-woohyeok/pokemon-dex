@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from '/src/layout/Home';
-import Dex from '/src/layout/Dex';
-import Detail from '/src/layout/Detail';
-import NotFound from '/src/layout/NotFound';
-import GlobalStyle from '../GlobalStyle';
+import GlobalStyle from '~/GlobalStyle';
+import Home from './Home';
+import Dex from './Dex';
+import Detail from './Detail';
+import NotFound from './NotFound';
 
 function Router() {
 	return (

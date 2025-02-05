@@ -15,7 +15,7 @@ const Card = ({ pokemon, styles = STYLES_CARD.DEFAULT, onClick, selected }) => {
 		pokemon?.[DTO_POKEMON.IMAGE] || defaultCard.src,
 	);
 	const nav = useNavigate();
-	const handleClick = (e) => {
+	const handleClick = () => {
 		styles === STYLES_CARD.POKEMON &&
 			nav(`/detail/${pokemon?.[DTO_POKEMON.ID]}`);
 	};

@@ -3,6 +3,7 @@ import MOCK_DATA from '~constant/MOCK';
 import CardList from '~components/CardList';
 import DashBoard from '~components/DashBoard';
 import styled from 'styled-components';
+import { DexContext } from '~hooks/useDexContext';
 
 function Dex() {
 	const [pokemonList, setPokemonList] = useState(MOCK_DATA);
@@ -34,10 +35,19 @@ function Dex() {
 		});
 	};
 
+	const contextValue = {
+		pokemonList,
+		dex,
+		onAddDexHandler,
+		onDeleteDexHandler,
+	};
+
 	return (
 		<StWrapper>
-			<DashBoard dex={dex} onDelete={onDeleteDexHandler} />
-			<CardList list={pokemonList} onAdd={onAddDexHandler} />
+			<DexContext.Provider value={contextValue}>
+				<DashBoard />
+				<CardList />
+			</DexContext.Provider>
 		</StWrapper>
 	);
 }

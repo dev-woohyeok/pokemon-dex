@@ -1,12 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import { commonContainer } from '~/GlobalStyle';
-import { DTO_POKEMON, STYLES_CARD, STYLES_CONTAINER } from '~/type/type';
+import {
+	CONTEXT_DEX,
+	DTO_POKEMON,
+	STYLES_CARD,
+	STYLES_CONTAINER,
+} from '~/type/type';
 import Card from '~components/Card';
+import useDexContext from '~hooks/useDexContext';
 
-function CardList({ list, onAdd }) {
+function CardList() {
+	const { [CONTEXT_DEX.POKEMON_LIST]: list, [CONTEXT_DEX.ON_ADD]: onAdd } =
+		useDexContext();
 	return (
-		<StContainer styles={STYLES_CONTAINER.CARD_LIST}>
+		<StContainer $styles={STYLES_CONTAINER.CARD_LIST}>
 			{list.map((pokemon) => {
 				return (
 					<Card

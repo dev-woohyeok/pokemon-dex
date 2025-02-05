@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
 
 export const commonContainer = (props) => css`
 	display: grid;
-	grid-template-columns: ${props.styles === STYLES_CONTAINER.CARD_LIST
+	grid-template-columns: ${props.$styles === STYLES_CONTAINER.CARD_LIST
 		? `repeat(auto-fill, minmax(250px, 1fr))`
 		: `repeat(6, minmax(250px, 1fr))`};
 	justify-items: center;

@@ -19,3 +19,11 @@ export const STYLES_CONTAINER = {
 	CARD_LIST: 'card_list',
 };
 Object.freeze(STYLES_CONTAINER);
+
+export const CONTEXT_DEX = {
+	ON_ADD: 'onAddDexHandler',
+	ON_DELETE: 'onDeleteDexHandler',
+	DEX: 'dex',
+	POKEMON_LIST: 'pokemonList',
+};
+Object.freeze(CONTEXT_DEX);
