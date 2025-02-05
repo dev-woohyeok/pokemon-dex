@@ -1,22 +1,15 @@
-import { useState, useEffect } from 'react';
-import { DTO_POKEMON } from '~/type/type';
+import { useState } from 'react';
 
-function useLoad(url, pokemon) {
+function useLoad(url) {
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [image, setImage] = useState(url);
 
-	useEffect(() => {
-		const img = new Image();
-		img.src = image;
-		img.onload = () => {
-			if (pokemon?.[DTO_POKEMON.SELECTED] === true)
-				console.log('온로드 실행');
-			setImage(img.src);
-			setIsLoaded(true);
-		};
-	}, []);
+	const img = new Image();
+	img.src = url;
+	img.onload = () => {
+		setIsLoaded(true);
+	};
 
-	return [isLoaded, image];
+	return [isLoaded, url];
 }
 
 export default useLoad;
