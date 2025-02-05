@@ -1,17 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { commonContainer } from '~/GlobalStyle';
-import {
-	CONTEXT_DEX,
-	DTO_POKEMON,
-	STYLES_CARD,
-	STYLES_CONTAINER,
-} from '~/type/type';
+import { DTO_POKEMON, STYLES_CARD, STYLES_CONTAINER } from '~/type/type';
 import Card from '~components/Card';
-import useDexContext from '~hooks/useDexContext';
+import { deleteDex } from '~redux/modules/dex';
 
 function DashBoard() {
-	const { [CONTEXT_DEX.DEX]: dex, [CONTEXT_DEX.ON_DELETE]: onDelete } =
-		useDexContext();
+	const dex = useSelector((state) => state.dex);
+	const dispatch = useDispatch();
 
 	return (
 		<StContainer $styles={STYLES_CONTAINER.DASH_BOARD}>
@@ -22,7 +18,7 @@ function DashBoard() {
 						styles={STYLES_CARD.POKEMON}
 						pokemon={pokemon}
 						selected={pokemon?.[DTO_POKEMON.SELECTED]}
-						onClick={onDelete}
+						onClick={(pokemon) => dispatch(deleteDex(pokemon))}
 					/>
 				) : (
 					<Card key={`${pokemon?.[DTO_POKEMON.ID]}-${index}`} />
