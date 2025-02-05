@@ -103,6 +103,16 @@ const StCard = styled.div`
 				transform: translateY(-5px);
 			}
 		`}
+
+	@media (max-width: 768px) {
+		gap: 0.8rem;
+		padding: 0.8rem;
+	}
+
+	@media (max-width: 480px) {
+		gap: 0.5rem;
+		padding: 0.5rem;
+	}
 `;
 
 const StCardAvatar = styled.div`

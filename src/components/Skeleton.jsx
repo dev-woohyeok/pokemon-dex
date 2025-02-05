@@ -25,8 +25,8 @@ const StSkeleton = styled.div`
 		switch (type) {
 			case `logo`:
 				return css`
-					width: 900px;
-					height: 400px;
+					width: calc(100px + 60vmin);
+					height: calc(50px + 30vmin);
 					margin: 2rem 0;
 					border-radius: 1rem;
 				`;
