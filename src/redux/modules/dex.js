@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { DTO_POKEMON } from '~/type/type';
 
 const dexSlice = createSlice({
 	name: 'dex',
@@ -9,7 +10,9 @@ const dexSlice = createSlice({
 			const index = state.findIndex((obj) => !obj.selected);
 			if (
 				state.some(
-					(obj) => obj.selected && obj.id === action.payload.id,
+					(obj) =>
+						obj.selected &&
+						obj.id === action.payload[DTO_POKEMON.ID],
 				)
 			) {
 				alert('이미 추가된 포켓몬입니다.');
@@ -23,9 +26,10 @@ const dexSlice = createSlice({
 		},
 		deleteDex: (state, action) => {
 			const index = state.findIndex(
-				(obj) => obj.id === action.payload.id,
+				(obj) => obj.id === action.payload[DTO_POKEMON.ID],
 			);
-			state[index].selected = false;
+			const newPokemon = { ...action.payload, selected: false };
+			state[index] = newPokemon;
 		},
 	},
 });

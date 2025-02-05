@@ -19,7 +19,9 @@ function CardList() {
 						styles={STYLES_CARD.POKEMON}
 						pokemon={pokemon}
 						selected={pokemon?.[DTO_POKEMON.SELECTED]}
-						onClick={(pokemon) => dispatch(addDex(pokemon))}
+						onClick={(pokemon) => {
+							dispatch(addDex(pokemon));
+						}}
 					/>
 				);
 			})}

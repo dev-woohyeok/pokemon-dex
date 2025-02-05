@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function Button({ Type = 'default', onClick, children }) {
+function Button({ onClick, children }) {
 	return <StButton onClick={onClick}>{children}</StButton>;
 }
 

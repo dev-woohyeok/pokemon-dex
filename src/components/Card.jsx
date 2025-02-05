@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { DTO_POKEMON, STYLES_CARD, STYLES_CONTAINER } from '~/type/type';
+import { DTO_POKEMON, STYLES_CARD } from '~/type/type';
 import Button from '~components/Button';
 import Skeleton from '~components/Skeleton';
 import useLoad from '~hooks/useLoad';
@@ -11,36 +12,58 @@ const defaultCard = {
 };
 
 const Card = ({ pokemon, styles = STYLES_CARD.DEFAULT, onClick, selected }) => {
-	const [isLoaded, imageSrc] = useLoad(
-		pokemon?.[DTO_POKEMON.IMAGE] || defaultCard.src,
-	);
+	// const [isLoaded, imageSrc] = useLoad(
+	// 	pokemon?.[DTO_POKEMON.IMAGE] || defaultCard.src,
+	// 	pokemon,
+	// );
+	const [isLoaded, setIsLoaded] = useState(false);
+	const [imageSrc, setImageSrc] = useState(() => {
+		console.log('초기값 설정');
+		return pokemon?.[DTO_POKEMON.IMAGE] || defaultCard.src;
+	});
+
+	useEffect(() => {
+		if (pokemon?.[DTO_POKEMON.SELECTED] === true)
+			console.log('useEffect 실행');
+		const img = new Image();
+		img.src = imageSrc;
+		img.onload = () => {
+			setImageSrc(img.src);
+			setIsLoaded(true);
+		};
+		return () => {
+			console.log('이미지 로드 해제');
+		};
+	}, []);
+
 	const nav = useNavigate();
 	const handleClick = () => {
 		styles === STYLES_CARD.POKEMON &&
 			nav(`/detail/${pokemon?.[DTO_POKEMON.ID]}`);
 	};
 
+	// if (pokemon?.id == 3) {
+	// 	console.log(`🚀 - Card.jsx:15 - Card - pokemon:`, pokemon);
+	// 	console.log(`🚀 - Card.jsx:15 - Card - styles:`, styles);
+	// }
+
 	return (
 		<StCard onClick={handleClick} type={styles}>
 			<StCardAvatar>
-				{isLoaded ? (
-					<StImage
-						src={
-							styles === STYLES_CARD.DEFAULT
-								? defaultCard.src
-								: imageSrc
-						}
-						alt={
-							pokemon?.[DTO_POKEMON.NAME]
-								? `${pokemon?.[DTO_POKEMON.NAME]} 이미지`
-								: defaultCard.alt
-						}
-					/>
-				) : (
-					<Skeleton type="card" />
-				)}
+				{/* {isLoaded ? ( */}
+				<StImage
+					src={imageSrc}
+					alt={
+						pokemon?.[DTO_POKEMON.NAME]
+							? `${pokemon?.[DTO_POKEMON.NAME]} 이미지`
+							: defaultCard.alt
+					}
+				/>
+				{/* // ) : ( */}
+				<Skeleton type="card" />
+				{/* // )} */}
 			</StCardAvatar>
-			{styles === 'pokemon' && (
+			{styles === STYLES_CARD.POKEMON && (
 				<>
 					<StCardInfo>
 						<StCardName>{pokemon?.[DTO_POKEMON.NAME]}</StCardName>

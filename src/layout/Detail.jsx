@@ -1,15 +1,31 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { DTO_POKEMON } from '~/type/type';
 import Button from '~components/Button';
-import MOCK_DATA from '~constant/MOCK';
+import { addDex, deleteDex } from '~redux/modules/dex';
 
 function Detail() {
-	const nav = useNavigate();
 	const { pid } = useParams();
-	const pokemon = MOCK_DATA.find(
-		(pokemon) => parseInt(pokemon.id) === parseInt(pid),
+	const dex = useSelector((state) => state.dex);
+	const pokemon = useSelector((state) => state.pokemons).find(
+		(pokemon) => pokemon?.[DTO_POKEMON.ID] == parseInt(pid),
 	);
+	const dispatch = useDispatch();
+	const nav = useNavigate();
+	const [isSelected, setIsSelected] = useState(
+		dex.some(
+			(pokemon) =>
+				pokemon?.[DTO_POKEMON.SELECTED] &&
+				pokemon?.[DTO_POKEMON.ID] === parseInt(pid),
+		),
+	);
+
+	const onClickButtonHandler = () => {
+		isSelected ? dispatch(deleteDex(pokemon)) : dispatch(addDex(pokemon));
+		setIsSelected((prev) => !prev);
+	};
 
 	return (
 		<StContainer>
@@ -17,7 +33,14 @@ function Detail() {
 			<StName>{pokemon?.[DTO_POKEMON.NAME]}</StName>
 			<StType>타입 : {pokemon?.[DTO_POKEMON.TYPES].join(', ')}</StType>
 			<StDescription>{pokemon?.[DTO_POKEMON.DESCRIPTION]}</StDescription>
-			<Button onClick={() => nav(-1)}>뒤로가기</Button>
+			<StButton>
+				{isSelected ? (
+					<Button onClick={onClickButtonHandler}>삭제</Button>
+				) : (
+					<Button onClick={onClickButtonHandler}>추가</Button>
+				)}
+				<Button onClick={() => nav(-1)}>뒤로가기</Button>
+			</StButton>
 		</StContainer>
 	);
 }
@@ -50,6 +73,15 @@ const StType = styled.span`
 const StDescription = styled.span`
 	font-size: calc(1rem + 0.5vmin);
 	font-weight: 350;
+`;
+
+const StButton = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	background-color: transparent;
+	gap: 1rem;
 `;
 
 export default Detail;
