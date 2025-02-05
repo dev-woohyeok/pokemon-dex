@@ -22,6 +22,9 @@
             ],
             "~type/*": [
                 "src/type/*"
+            ],
+            "~assets/*": [
+                "src/assets/*"
             ]
         }
     }
