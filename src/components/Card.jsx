@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { DTO_POKEMON, STYLES_CARD } from '~/type/type';
@@ -182,4 +182,4 @@ const StCardNumber = styled.div`
 
 const StCardButtons = styled.div``;
 
-export default Card;
+export default React.memo(Card);

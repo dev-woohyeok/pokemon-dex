@@ -46,7 +46,7 @@ $ cd pokemon-dex
 $ npm install
 
 # 4. 개발 서버 실행
-$ npm start
+$ npm run dev
 ```
 
 ## 🌍 페이지 구성

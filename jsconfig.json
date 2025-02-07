@@ -23,14 +23,8 @@
             "~type/*": [
                 "src/type/*"
             ],
-            "~assets/*": [
-                "src/assets/*"
-            ],
-            "~config/*": [
-                "src/redux/config/*"
-            ],
-            "~modules/*": [
-                "src/redux/modules/*"
+            "~context/*": [
+                "src/context/*"
             ]
         }
     }
