@@ -13,7 +13,7 @@ Pokemon Dex는 React를 활용하여 포켓몬 데이터를 관리하는 **싱�
 
 ## 📌 주요 기능
 
-✅ **포켓몬 리스트 조회**: 등록된 포켓몬들을 검색어를 통해 리스트로 확인할 수 있습니다.  
+✅ **포켓몬 리스트 조회**: 등록된 포켓몬을 리스트로 확인할 수 있습니다.  
 ✅ **포켓몬 추가**: 새로운 포켓몬을 추가할 수 있습니다.  
 ✅ **포켓몬 수정**: 기존 포켓몬 정보를 수정할 수 있습니다.  
 ✅ **포켓몬 삭제**: 포켓몬을 삭제할 수 있습니다.
@@ -26,6 +26,7 @@ Pokemon Dex는 React를 활용하여 포켓몬 데이터를 관리하는 **싱�
 -   **Frontend**: React, React Router, Context API, Redux Toolkit
 -   **State Management**: Prop Drilling, Context API, Redux Toolkit
 -   **CSS**: Styled-components
+-   **UI 라이브러리**: React-toastify, SweetAlert2
 
 ## 📂 프로젝트 구조
 
